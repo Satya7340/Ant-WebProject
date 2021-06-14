@@ -8,8 +8,10 @@ stages
   }
   
   stage('prepare the environment')
-  { steps{sh 'ant prepare'
-          }
+  { steps{
+    withAnt(installation: 'myant', jdk: 'my_Java') 
+      { sh 'ant prepare'}
+   }
   }
   
   stage('code compile')
